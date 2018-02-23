@@ -1,0 +1,11 @@
+{
+  "name": "pylint",
+  "description": "Pylint is a source code bug and quality checker for the Python programming language.",
+  "maintainer": {
+    "name": "Caio Andrade",
+    "email": "caiofbpa@icloud.com"
+  },
+  "languages" : ["Python"],
+  "version": "0.1",
+  "spec_version": "0.3.1"
+}

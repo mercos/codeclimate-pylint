@@ -1,0 +1,40 @@
+#!/usr/bin/env python
+
+import glob, json
+
+from pylint.lint import Run
+from reporter import CodeClimateReporter
+
+try:
+    with open('/config.json') as config_file:
+        config = json.loads(config_file.read())
+except IOError:
+    config = {}
+
+include_paths = config.get('include_paths', ['./'])
+exclude_paths = config.get('exclude_paths', [])
+
+
+def process_python_files_in_paths(paths, process):
+    for path in paths:
+        if path.endswith('.py'):
+            process(path)
+        if path.endswith('/'):
+            subpaths = glob.glob(path + "*.py") + glob.glob(path + "*/**/*.py")
+            for subpath in subpaths:
+                process(subpath)
+
+
+def add_path(path):
+    params.append(path)
+
+
+def remove_path(path):
+    if path in params:
+        params.remove(path)
+
+
+params = []
+process_python_files_in_paths(include_paths, add_path)
+process_python_files_in_paths(exclude_paths, remove_path)
+Run(params, reporter=CodeClimateReporter(), exit=False)
