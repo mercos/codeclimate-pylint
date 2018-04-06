@@ -37,4 +37,5 @@ def remove_path(path):
 params = []
 process_python_files_in_paths(include_paths, add_path)
 process_python_files_in_paths(exclude_paths, remove_path)
-Run(params, reporter=CodeClimateReporter(), exit=False)
+if params:
+    Run(params, reporter=CodeClimateReporter(), exit=False)
