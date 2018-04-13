@@ -1,3 +1,5 @@
+[![Requirements Status](https://requires.io/github/meuspedidos/codeclimate-pylint/requirements.svg?branch=master)](https://requires.io/github/meuspedidos/codeclimate-pylint/requirements/?branch=master)
+
 # Code Climate Pylint Engine
 
 `codeclimate-pylint` is a Code Climate engine that wraps the [Pylint](https://github.com/PyCQA/pylint) source code analyzer. You can run it on your command line using the Code Climate CLI, or on our hosted analysis platform.
