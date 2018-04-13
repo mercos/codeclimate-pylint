@@ -13,6 +13,7 @@ except IOError:
 
 include_paths = config.get('include_paths', ['./'])
 exclude_paths = config.get('exclude_paths', [])
+plugins_config = config.get('plugins', [])
 
 
 def process_python_files_in_paths(paths, process):
@@ -26,16 +27,26 @@ def process_python_files_in_paths(paths, process):
 
 
 def add_path(path):
-    params.append(path)
+    files.append(path)
 
 
 def remove_path(path):
-    if path in params:
-        params.remove(path)
+    if path in files:
+        files.remove(path)
 
 
-params = []
+paths = ''
+files = []
 process_python_files_in_paths(include_paths, add_path)
 process_python_files_in_paths(exclude_paths, remove_path)
-if params:
+if files:
+    paths = ' '.join(files)
+
+plugins = ''
+if plugins_config:
+    plugin_names = map(lambda plugin: 'pylint_{}'.format(plugin), plugins_config)
+    plugins = '--load-plugins ' + ','.join(plugin_names)
+
+if paths:
+    params = ' '.join([plugins, paths])
     Run(params, reporter=CodeClimateReporter(), exit=False)
