@@ -35,18 +35,12 @@ def remove_path(path):
         files.remove(path)
 
 
-paths = ''
 files = []
 process_python_files_in_paths(include_paths, add_path)
 process_python_files_in_paths(exclude_paths, remove_path)
+
 if files:
-    paths = ' '.join(files)
-
-plugins = ''
-if plugins_config:
-    plugin_names = map(lambda plugin: 'pylint_{}'.format(plugin), plugins_config)
-    plugins = '--load-plugins ' + ','.join(plugin_names)
-
-if paths:
-    params = ' '.join([plugins, paths])
-    Run(params, reporter=CodeClimateReporter(), exit=False)
+    if plugins_config:
+        plugin_names = map(lambda plugin: 'pylint_{}'.format(plugin), plugins_config)
+        files.append('--load-plugins=' + ','.join(plugin_names))
+    Run(files, reporter=CodeClimateReporter(), exit=False)
