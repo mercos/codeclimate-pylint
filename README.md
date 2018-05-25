@@ -1,4 +1,4 @@
-[![Maintainability](https://api.codeclimate.com/v1/badges/af6595b5ba0a85c3c0a1/maintainability)](https://codeclimate.com/github/meuspedidos/codeclimate-pylint/maintainability) [![Requirements Status](https://requires.io/github/meuspedidos/codeclimate-pylint/requirements.svg?branch=master)](https://requires.io/github/meuspedidos/codeclimate-pylint/requirements/?branch=master)
+[![Maintainability](https://api.codeclimate.com/v1/badges/af6595b5ba0a85c3c0a1/maintainability)](https://codeclimate.com/github/meuspedidos/codeclimate-pylint/maintainability)
 
 # Code Climate Pylint Engine
 
