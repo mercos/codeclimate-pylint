@@ -1,6 +1,8 @@
-FROM python:2.7.14-alpine
+FROM python:3.6.6-alpine
 
 LABEL maintainer "Caio Andrade <caiofbpa@icloud.com>"
+
+RUN apk add build-base
 
 WORKDIR /usr/src/app
 COPY requirements.txt /usr/src/app/

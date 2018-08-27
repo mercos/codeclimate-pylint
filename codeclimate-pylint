@@ -43,4 +43,4 @@ if files:
     if plugins_config:
         plugin_names = map(lambda plugin: 'pylint_{}'.format(plugin), plugins_config)
         files.append('--load-plugins=' + ','.join(plugin_names))
-    Run(files, reporter=CodeClimateReporter(), exit=False)
+    Run(files, reporter=CodeClimateReporter(), do_exit=False)
