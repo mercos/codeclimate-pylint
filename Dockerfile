@@ -1,4 +1,4 @@
-FROM python:2.7.14-alpine
+FROM python:3.6.6-alpine
 
 LABEL maintainer "Caio Andrade <caiofbpa@icloud.com>"
 
