@@ -21,7 +21,7 @@ def process_python_files_in_paths(paths, process):
         if path.endswith('.py'):
             process(path)
         if path.endswith('/'):
-            subpaths = glob.glob(path + "*.py") + glob.glob(path + "*/**/*.py")
+            subpaths = glob.glob(path + "*.py") + glob.glob(path + "*/**/*.py", recursive=True)
             for subpath in subpaths:
                 process(subpath)
 
