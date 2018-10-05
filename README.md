@@ -22,6 +22,19 @@ You can configure which files to be analyzed in your `.codeclimate.yml` file.
 
 Other configurations can be made through a `.pylintrc` file. More information can be found on [Pylint's documentation](https://pylint.readthedocs.io/en/latest/)
 
+PYTHONPATH can be modified by setting the PYTHONPATH configuration variable:
+
+```yaml
+engines:
+  pylint:
+    enabled: true
+    channel: "beta"
+    PYTHONPATH:
+      - src
+```
+
+This adds the `src` directory to PYTHONPATH before running `pylint`. Relative paths are properly resolved to the current directory.
+
 Plugin activation can also be made in `.codeclimate.yml`:
 
 ```
