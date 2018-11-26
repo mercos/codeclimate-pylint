@@ -1,4 +1,4 @@
-pylint==2.1.1
+pylint==2.2.0
 pylint-django==2.0.2
 django==1.11.16
 pylint-celery==0.3
