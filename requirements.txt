@@ -1,5 +1,5 @@
 pylint==2.2.2
 pylint-django==2.0.5
-django==1.11.18
+django==1.11.20
 pylint-celery==0.3
 celery==4.2.1
