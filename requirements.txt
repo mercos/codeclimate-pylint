@@ -2,4 +2,4 @@ pylint==2.4.4
 pylint-django==2.0.13
 django==1.11.26
 pylint-celery==0.3
-celery==4.3.0
+celery==4.4.0
