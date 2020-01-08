@@ -1,52 +1,39 @@
 #!/usr/bin/env python
 
-import glob, json, os.path, sys
+import glob
+import json
+import os.path
+import sys
 
 from pylint.lint import Run
+
 from reporter import CodeClimateReporter
 
-try:
-    with open('/config.json') as config_file:
-        config = json.loads(config_file.read())
-except IOError:
-    config = {}
+CONFIG_FILE_LOCATION = "/config.json"
 
-include_paths = config.get('include_paths', ['./'])
-exclude_paths = config.get('exclude_paths', [])
-plugins_config = config.get('plugins', [])
+if os.path.exists(CONFIG_FILE_LOCATION):
+    contents = open(CONFIG_FILE_LOCATION).read()
+    config = json.loads(contents)
+else:
+    config = {}
 
 additional_python_path = config.get('PYTHONPATH', [])
 if isinstance(additional_python_path, str):
     additional_python_path = [additional_python_path]
-sys.path.extend(map(lambda x: os.path.abspath(x), additional_python_path))
-print("Running pylint using PYTHONPATH: " + (":".join(sys.path)), file=sys.stderr)
+if additional_python_path:
+    sys.path.extend(map(lambda x: os.path.abspath(x), additional_python_path))
 
+include_paths = config.get('include_paths', ['./'])
+parameters = []
+for path in include_paths:
+    if os.path.isdir(path):
+        parameters += glob.glob(path + "*/**/*.py", recursive=True)
+    elif path.endswith('.py'):
+        parameters.append(path)
 
-def process_python_files_in_paths(paths, process):
-    for path in paths:
-        if path.endswith('.py'):
-            process(path)
-        if path.endswith('/'):
-            subpaths = glob.glob(path + "*.py") + glob.glob(path + "*/**/*.py", recursive=True)
-            for subpath in subpaths:
-                process(subpath)
+plugins_config = config.get('plugins', [])
+if plugins_config:
+    plugin_names = map(lambda plugin: 'pylint_{}'.format(plugin), plugins_config)
+    parameters.append('--load-plugins=' + ','.join(plugin_names))
 
-
-def add_path(path):
-    files.append(path)
-
-
-def remove_path(path):
-    if path in files:
-        files.remove(path)
-
-
-files = []
-process_python_files_in_paths(include_paths, add_path)
-process_python_files_in_paths(exclude_paths, remove_path)
-
-if files:
-    if plugins_config:
-        plugin_names = map(lambda plugin: 'pylint_{}'.format(plugin), plugins_config)
-        files.append('--load-plugins=' + ','.join(plugin_names))
-    Run(files, reporter=CodeClimateReporter(), do_exit=False)
+Run(parameters, reporter=CodeClimateReporter(), do_exit=False)
