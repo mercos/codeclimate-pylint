@@ -34,7 +34,10 @@ class CodeClimateReporter(BaseReporter):
         message_lines = message.splitlines()
         codeclimate_dict['description'] = message_lines[0]
 
-        body = self._parse_message(self.linter.msgs_store.get_message_definition(pylint_issue.symbol).descr)
+        message_definition = self.linter.msgs_store.get_message_definitions(pylint_issue.symbol)
+        if message_definition:
+            message_definition = message_definition[0]
+        body = self._parse_message(message_definition.description)
         for line in message_lines[1:]:
             body += "\n" + line
         codeclimate_dict['content'] = {'body': body}
