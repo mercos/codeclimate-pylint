@@ -7,12 +7,11 @@
 ### Installation
 
 1. If you haven't already, [install the Code Climate CLI](https://github.com/codeclimate/codeclimate).
-2. Enable the engine through the beta channel in your .codeclimate.yml file:
+2. Enable the engine in your .codeclimate.yml file:
 ```
 engines:
   pylint:
     enabled: true
-    channel: "beta"
 ```
 3. You're ready to analyze! Browse into your project's folder and run `codeclimate analyze`.
 
@@ -28,7 +27,6 @@ PYTHONPATH can be modified by setting the PYTHONPATH configuration variable:
 engines:
   pylint:
     enabled: true
-    channel: "beta"
     PYTHONPATH:
       - src
 ```
@@ -41,7 +39,6 @@ Plugin activation can also be made in `.codeclimate.yml`:
 engines:
   pylint:
     enabled: true
-    channel: "beta"
     plugins:
       - django
 ```
