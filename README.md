@@ -47,8 +47,9 @@ Currently the following plugins are supported:
 
 - [pylint-django](https://github.com/PyCQA/pylint-django)
 - [pylint-celery](https://github.com/PyCQA/pylint-celery)
+- [pylint-quotes](https://github.com/edaniszewski/pylint-quotes)
 
-We welcome PRs adding support for other plugins, as well as updating the currently supported plugins' versions.
+We welcome PRs adding support for other plugins.
 
 ### Need help?
 
