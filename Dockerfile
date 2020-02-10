@@ -1,6 +1,6 @@
 FROM python:3.6.6-alpine
 
-LABEL maintainer "Caio Andrade <caiofbpa@icloud.com>"
+LABEL maintainer="Caio Andrade <caiofbpa@icloud.com>"
 
 RUN apk add build-base
 
