@@ -59,7 +59,7 @@ engines:
     enabled: true
     plugins:
       - django
-    settings_module: mymodule.settings
+    django_settings_module: mymodule.settings
 ```
 
 We welcome PRs adding support for other plugins.
