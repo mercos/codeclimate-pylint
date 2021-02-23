@@ -51,7 +51,7 @@ Currently the following plugins are supported:
 
 ### Using pylint-django
 
-According to the [latest pylint-django docs](https://github.com/PyCQA/pylint-django#usage) it's required to set Django settigns module according to the project. If you have your settings module at root level you should do nothing, but if that's not the case then you need to declare your settings module in `.codeclimate.yml` as shown below.
+According to the [latest pylint-django docs](https://github.com/PyCQA/pylint-django#usage) it's required to set Django settings module according to the project. If you have your settings module at root level you should do nothing, but if that's not the case then you need to declare your settings module in `.codeclimate.yml` as shown below.
 
 ```
 engines:
