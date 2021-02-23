@@ -32,8 +32,14 @@ for path in include_paths:
         parameters.append(path)
 
 plugins_config = config.get('plugins', [])
+django_settings_module = config.get('django_settings_module')
 if plugins_config:
     plugin_names = map(lambda plugin: 'pylint_{}'.format(plugin), plugins_config)
     parameters.append('--load-plugins=' + ','.join(plugin_names))
+    if 'django' in plugins_config:
+        if django_settings_module != None:
+            parameters.append('--django-settings-module=code.' + django_settings_module)
+        else:
+            parameters.append('--django-settings-module=code.settings')
 
 Run(parameters, reporter=CodeClimateReporter(), do_exit=False)

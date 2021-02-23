@@ -49,6 +49,19 @@ Currently the following plugins are supported:
 - [pylint-celery](https://github.com/PyCQA/pylint-celery)
 - [pylint-quotes](https://github.com/edaniszewski/pylint-quotes)
 
+### Using pylint-django
+
+According to the [latest pylint-django docs](https://github.com/PyCQA/pylint-django#usage) it's required to set Django settings module according to the project. If you have your settings module at root level you should do nothing, but if that's not the case then you need to declare your settings module in `.codeclimate.yml` as shown below.
+
+```
+engines:
+  pylint:
+    enabled: true
+    plugins:
+      - django
+    django_settings_module: mymodule.settings
+```
+
 We welcome PRs adding support for other plugins.
 
 ### Need help?
