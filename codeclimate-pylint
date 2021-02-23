@@ -35,5 +35,7 @@ plugins_config = config.get('plugins', [])
 if plugins_config:
     plugin_names = map(lambda plugin: 'pylint_{}'.format(plugin), plugins_config)
     parameters.append('--load-plugins=' + ','.join(plugin_names))
+    if 'django' in plugins_config:
+        parameters.append('--django-settings-module=code.settings')
 
 Run(parameters, reporter=CodeClimateReporter(), do_exit=False)
