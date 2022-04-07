@@ -2,5 +2,5 @@ pylint==2.13.5
 pylint-django==2.5.3
 django==2.2.27
 pylint-celery==0.3
-celery==5.2.5
+celery==5.2.6
 pylint-quotes==0.2.3
