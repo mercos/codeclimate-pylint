@@ -1,6 +1,6 @@
 pylint==2.13.9
 pylint-django==2.5.3
-django==3.2.13
+django==4.0.4
 pylint-celery==0.3
 celery==5.2.6
 pylint-quotes==0.2.3
