@@ -1,5 +1,8 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/af6595b5ba0a85c3c0a1/maintainability)](https://codeclimate.com/github/meuspedidos/codeclimate-pylint/maintainability)
 
+> [!WARNING] 
+> We have decided to archive this repository because we don't have the necessary means to maintain it any longer. If you liked it, you can fork it.
+
 # Code Climate Pylint Engine
 
 `codeclimate-pylint` is a Code Climate engine that wraps the [Pylint](https://github.com/PyCQA/pylint) source code analyzer. You can run it on your command line using the Code Climate CLI, or on our hosted analysis platform.
